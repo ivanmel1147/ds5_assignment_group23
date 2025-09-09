@@ -1,3 +1,5 @@
+# Week 2 assignment: studentg rades report
+# Ivan adds the the function to read csv
 file_path = input("Enter the path to the CSV file: ")
 records = []
 with open(file_path, 'r') as file:
