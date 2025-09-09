@@ -1,4 +1,4 @@
-ile_path = input("Enter the path to the CSV file: ")
+file_path = input("Enter the path to the CSV file: ")
 records = []
 with open(file_path, 'r') as file:
 csv_reader = csv.DictReader(file)
@@ -9,4 +9,5 @@ average = total / len(records)
 print(f"Average Grade: {average}")
 print("--------------------")
 filtered_records = [record for record in records if float(record['Grade']) >= 80.0]
-print("Student
+print("Student Report")
+print("--------------")
