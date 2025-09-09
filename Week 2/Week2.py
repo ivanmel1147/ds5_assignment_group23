@@ -6,11 +6,12 @@ with open(file_path, 'r') as file:
         records.append(row)
 
 
-
-total = sum(float(record['Grade']) for record in records)
-average = total / len(records)
-print(f"Average Grade: {average}")
-print("--------------------")
+def calculate_average(records):
+    "Calculate and print the average grade from the records"
+    total = sum(float(record['Grade']) for record in records)
+    average = total / len(records)
+    print(f"Average Grade: {average}")
+    print("--------------------")
 
 
 
