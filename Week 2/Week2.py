@@ -1,9 +1,9 @@
 file_path = input("Enter the path to the CSV file: ")
 records = []
 with open(file_path, 'r') as file:
-csv_reader = csv.DictReader(file)
-for row in csv_reader:
-records.append(row)
+    csv_reader = csv.DictReader(file)
+    for row in csv_reader:
+        records.append(row)
 
 
 
