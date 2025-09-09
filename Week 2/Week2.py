@@ -1,5 +1,3 @@
-# Week 2 assignment: studentg rades report
-# Ivan adds the the function to read csv
 file_path = input("Enter the path to the CSV file: ")
 records = []
 with open(file_path, 'r') as file:
@@ -8,16 +6,16 @@ with open(file_path, 'r') as file:
         records.append(row)
 
 
-def calculate_average(records):
-    "Calculate and print the average grade from the records"
-    total = sum(float(record['Grade']) for record in records)
-    average = total / len(records)
-    print(f"Average Grade: {average}")
-    print("--------------------")
+
+total = sum(float(record['Grade']) for record in records)
+average = total / len(records)
+print(f"Average Grade: {average}")
+print("--------------------")
 
 
 
-
-filtered_records = [record for record in records if float(record['Grade']) >= 80.0]
-print("Student Report")
-print("--------------")
+def filter_record(records):
+    """Return student with grade >= 80"""
+    filtered_records = [record for record in records if float(record['Grade']) >= 80.0]
+    print("Student Report")
+    print("--------------")
