@@ -1,4 +1,5 @@
 import csv
+# we will read a CSV file with student records and perform some operations 
 file_path = input("Enter the path to the CSV file: ")
 records = []
 with open(file_path, 'r') as file:
