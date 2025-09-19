@@ -94,39 +94,3 @@ pagerank_undirected = simulate_pagerank(G_undirected, alpha, T)
 plot_network(G_undirected, "Barabasi-Albert Network (Undirected)")
 plot_pagerank_distribution(pagerank_undirected, "PageRank Distribution (Undirected)")
 
-# Exercise 3.2: Directed Wikipedia squirrel network PageRank
-
-def load_directed_graph_from_csv(file_path: str) -> nx.DiGraph:
-    """ Load directed graph from CSV file with edges: source,target"""
-    G = nx.DiGraph()
-    with open(file_path, 'r') as f:
-        next(f)  # skip header if present
-        for line in f:
-            source, target = line.strip().split(',')
-            G.add_edge(source, target)
-    return G
-
-def simulate_pagerank_directed(G: nx.DiGraph, alpha: float, T: int) -> Dict[str, float]:
-    """ Simulate PageRank on directed graph G"""
-    nodes = list(G.nodes)
-    current = random.choice(nodes)
-    visits = defaultdict(int)
-    
-    for _ in range(T):
-        visits[current] += 1
-        neighbors = list(G.successors(current))
-        if neighbors and random.random() < alpha:
-            current = random.choice(neighbors)
-        else:
-            current = random.choice(nodes)
-    pagerank = {node: visits[node] / T for node in nodes}
-    return pagerank
-
-def plot_pagerank_distribution_directed(pagerank: Dict[str, float], title: str) -> None:
-    """ Plot histogram of PageRank probabilities for directed graph"""
-    plt.figure(figsize=(8,6))
-    plt.hist(pagerank.values(), bins=30, color='orange', edgecolor='black')
-    plt.title(title)
-    plt.xlabel('PageRank Probability')
-    plt.ylabel('Frequency')
-    plt.show()
