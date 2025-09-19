@@ -1,13 +1,22 @@
+#1 ivan
+def mandelbrot(c, max_iter=100):
+    """
+    Compute the diverging index for a complex number c.
 
+    Parameters:
+        c (complex): The complex number to test.
+        max_iter (int): Maximum number of iterations.
 
-
-
-
-
-
-
-
-
+    Returns:
+        int: The iteration at which the sequence diverges (1..max_iter).
+             Returns 0 if it never diverges within max_iter.
+    """
+    a = 0
+    for n in range(1, max_iter + 1):
+        a = a**2 + c
+        if abs(a) > 2:
+            return n
+    return 0
 
 #2
 def pixel_to_complex(pixel_x: int, pixel_y: int, width: int, x_range: tuple[float, float], y_range: tuple[float, float]):
