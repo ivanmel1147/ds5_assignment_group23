@@ -33,3 +33,17 @@ def load_data(file_path: str) -> pd.DataFrame:
     """
     return pd.read_excel(file_path)
 
+def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Remove duplicate rows from a DataFrame.
+
+    Parameters:
+        df (pd.DataFrame): The input DataFrame.
+
+    Returns:
+        pd.DataFrame: A new DataFrame with duplicate rows removed.
+    
+    Author:
+        Edwin
+    """
+    return df.drop_duplicates()
