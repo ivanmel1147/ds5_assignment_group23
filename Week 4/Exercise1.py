@@ -84,3 +84,47 @@ Columns that are entirely missing are dropped.
                 df[column].fillna('Unknown', inplace=True)
 
     return df
+
+
+def separate_categorical_numerical(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    Separate the DataFrame into categorical and numerical DataFrames.
+
+    Parameters:
+        df (pd.DataFrame): The input DataFrame.
+
+    Returns:
+        tuple[pd.DataFrame, pd.DataFrame]: A tuple containing two DataFrames:
+            - The first with only categorical columns.
+            - The second with only numerical columns.
+
+    Author:
+        Bronswhite
+    """
+    categorical_df = df.select_dtypes(include=['object', 'category'])
+    numerical_df = df.select_dtypes(include=['number'])
+    return categorical_df, numerical_df 
+
+def clean_hotel_bookings_data(file_path: str) -> pd.DataFrame:
+    """
+    Load and clean the hotel bookings dataset by performing all cleaning steps:
+    - Load data
+    - Remove duplicates
+    - Handle missing values
+    - (Optional) Separate categorical and numerical data for further processing
+
+    Parameters:
+        file_path (str): Path to the Excel file.
+
+    Returns:
+        pd.DataFrame: The fully cleaned DataFrame.
+
+    Author:
+        Bronswhite
+    """
+    df = load_data(file_path)
+    df = remove_duplicates(df)
+    df = handle_missing_values(df)
+    # Optionally separate data if needed for further processing
+    # categorical_df, numerical_df = separate_categorical_numerical(df)
+    return df 
