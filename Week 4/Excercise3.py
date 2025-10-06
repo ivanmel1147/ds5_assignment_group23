@@ -68,3 +68,60 @@ def clean_tweet(text: str) -> str:
 
     return text
 
+
+#ex3.2(1&2)
+
+from textblob import TextBlob
+from nltk.sentiment import SentimentIntensityAnalyzer
+import nltk
+
+# Download VADER lexicon if not already downloaded
+nltk.download('vader_lexicon')
+
+def analyze_sentiment_english(tweet: str) -> str:
+    """
+    Analyze sentiment of an English tweet using TextBlob.
+
+    Parameters:
+    tweet (str): The tweet text in English.
+
+    Returns:
+    str: 'positive' if polarity > 0,
+         'negative' if polarity < 0,
+         'neutral' otherwise.
+
+    Author: Bronswhite
+    """
+    blob = TextBlob(tweet)
+    polarity = blob.sentiment.polarity
+    if polarity > 0:
+        return 'positive'
+    elif polarity < 0:
+        return 'negative'
+    else:
+        return 'neutral'
+
+
+def analyze_sentiment_other(tweet: str) -> str:
+    """
+    Analyze sentiment of a non-English tweet using NLTK's SentimentIntensityAnalyzer.
+
+    Parameters:
+    tweet (str): The tweet text in any language other than English.
+
+    Returns:
+    str: 'positive' if compound score >= 0.05,
+         'negative' if compound score <= -0.05,
+         'neutral' otherwise.
+
+    Author: Bronswhite
+    """
+    sia = SentimentIntensityAnalyzer()
+    scores = sia.polarity_scores(tweet)
+    compound = scores['compound']
+    if compound >= 0.05:
+        return 'positive'
+    elif compound <= -0.05:
+        return 'negative'
+    else:
+        return 'neutral'
