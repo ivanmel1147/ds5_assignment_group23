@@ -20,3 +20,19 @@ train_y = y[:80]
 
 test_x = x[80:]
 test_y = y[80:]
+
+#c)
+plt.scatter(train_x, train_y)
+plt.xlabel('x')
+plt.ylabel('y') 
+plt.title('Dataset') 
+plt.show() 
+
+plt.scatter(test_x, test_y)
+plt.xlabel('x')
+plt.ylabel('y') 
+plt.title('Dataset') 
+plt.show()
+
+# Type of relationship: Non-linear, quadratic
+# Regression model: Polynomial Regression (degree 2) - y = ax^2 + bx + c
