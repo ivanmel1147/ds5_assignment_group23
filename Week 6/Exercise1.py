@@ -14,3 +14,9 @@ plt.ylabel('y')
 plt.title('Dataset') 
 plt.show()   
 
+#b)
+train_x = x[:80]
+train_y = y[:80]
+
+test_x = x[80:]
+test_y = y[80:]
