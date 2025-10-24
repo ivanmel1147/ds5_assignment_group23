@@ -10,3 +10,6 @@ df.head()
 print(df.shape)
 print(df.describe())
 print(df.info())
+
+#c)
+df = df.dropna()
