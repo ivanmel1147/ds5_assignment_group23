@@ -35,4 +35,26 @@ plt.title('Dataset')
 plt.show()
 
 # Type of relationship: Non-linear, quadratic
-# Regression model: Polynomial Regression (degree 2) - y = ax^2 + bx + c
+# Regression model: Polynomial Regression (degree 2) - y = ax^2 + bx + 
+
+#d)
+import numpy as np
+import statsmodels.api as sm
+from sklearn.metrics import r2_score, mean_squared_error
+
+#Train the polynomial regression model (degree 2) using statsmodels
+X_train = np.column_stack((train_x, train_x**2))
+X_train = sm.add_constant(X_train)  # add intercept term
+model = sm.OLS(train_y, X_train).fit()
+
+#e)
+#Evaluate the model on test data
+X_test = np.column_stack((test_x, test_x**2))
+X_test = sm.add_constant(X_test)
+y_pred = model.predict(X_test)
+
+print(model.summary())  # Optional: detailed regression results
+print(f"R²: {r2_score(test_y, y_pred):.4f}")
+print(f"MSE: {mean_squared_error(test_y, y_pred):.4f}")
+
+
